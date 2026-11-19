@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Codencoffee";
+  src: url("../fonts/Codencoffee-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+.codencoffee {
+  font-family: "Codencoffee", sans-serif;
+  font-weight: 700;
+  font-synthesis: none;
+}
