@@ -25,6 +25,14 @@ const groups=[
 ["Additional Unicode","₹×÷¿¡"]
 ];
 const atlas=document.getElementById("atlas");
+function glyphName(ch,cp){
+ if(cp===32)return "SPACE";
+ if(cp>=65&&cp<=90)return "LATIN CAPITAL LETTER "+ch;
+ if(cp>=97&&cp<=122)return "LATIN SMALL LETTER "+ch.toUpperCase();
+ if(cp>=48&&cp<=57)return "DIGIT "+ch;
+ const names={33:"EXCLAMATION MARK",34:"QUOTATION MARK",35:"NUMBER SIGN",36:"DOLLAR SIGN",37:"PERCENT SIGN",38:"AMPERSAND",39:"APOSTROPHE",40:"LEFT PARENTHESIS",41:"RIGHT PARENTHESIS",42:"ASTERISK",43:"PLUS SIGN",44:"COMMA",45:"HYPHEN-MINUS",46:"FULL STOP",47:"SOLIDUS",58:"COLON",59:"SEMICOLON",60:"LESS-THAN SIGN",61:"EQUALS SIGN",62:"GREATER-THAN SIGN",63:"QUESTION MARK",64:"COMMERCIAL AT",91:"LEFT SQUARE BRACKET",92:"REVERSE SOLIDUS",93:"RIGHT SQUARE BRACKET",94:"CIRCUMFLEX ACCENT",95:"LOW LINE",96:"GRAVE ACCENT",123:"LEFT CURLY BRACKET",124:"VERTICAL LINE",125:"RIGHT CURLY BRACKET",126:"TILDE",161:"INVERTED EXCLAMATION MARK",191:"INVERTED QUESTION MARK",215:"MULTIPLICATION SIGN",247:"DIVISION SIGN",8377:"INDIAN RUPEE SIGN"};
+ return names[cp]||"CHARACTER";
+}
 for(const [title,chars] of groups){
  const section=document.createElement("section");section.className="section";
  const heading=document.createElement("h2");heading.textContent=title;section.append(heading);
@@ -32,7 +40,7 @@ for(const [title,chars] of groups){
  for(const ch of [...new Set([...chars])]){
   const cp=ch.codePointAt(0);const card=document.createElement("div");card.className="glyph";
   const glyph=document.createElement("div");glyph.className="char";glyph.textContent=ch===" "?"␠":ch;
-  const label=document.createElement("div");label.className="name";label.textContent="U+"+cp.toString(16).toUpperCase().padStart(4,"0")+" · "+(cp===32?"SPACE":"GLYPH");
+  const label=document.createElement("div");label.className="name";label.textContent="U+"+cp.toString(16).toUpperCase().padStart(4,"0")+" · "+glyphName(ch,cp);
   card.append(glyph,label);grid.append(card);
  }
  section.append(grid);atlas.append(section);
