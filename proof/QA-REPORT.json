@@ -1,0 +1,17 @@
+{
+  "family": "Codencoffee",
+  "style": "Bold",
+  "master": "fonts/Codencoffee-Bold.woff2",
+  "outline_type": "TrueType quadratic outlines (WOFF2 container)",
+  "glyph_count": 101,
+  "mapped_codepoints": 100,
+  "ascii_printable_coverage": true,
+  "extra_unicode": [
+    "U+00A1 INVERTED EXCLAMATION MARK",
+    "U+00BF INVERTED QUESTION MARK",
+    "U+00D7 MULTIPLICATION SIGN",
+    "U+00F7 DIVISION SIGN",
+    "U+20B9 INDIAN RUPEE SIGN"
+  ],
+  "validation": "Locally opened with fontTools; full printable ASCII cmap confirmed."
+}
