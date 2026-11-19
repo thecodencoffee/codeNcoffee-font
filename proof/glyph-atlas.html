@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Codencoffee Bold · Glyph Atlas</title>
+<style>
+@font-face{font-family:Codencoffee;src:url('../fonts/Codencoffee-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#101014;color:#f4f4f6;font:15px/1.5 system-ui,sans-serif;padding:32px}
+h1{font:700 clamp(32px,6vw,64px)/1 Codencoffee,monospace;margin:0 0 12px}p{color:#aaa;margin:0 0 28px}.section{margin:30px 0}.section h2{font-size:17px;color:#b7b7c2;border-bottom:1px solid #303039;padding-bottom:8px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:9px}.glyph{background:#19191f;border:1px solid #303039;border-radius:10px;min-height:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}.char{font:700 48px/1.2 Codencoffee,monospace;min-height:60px}.name{font:11px/1.4 ui-monospace,monospace;color:#a6a6b2;text-align:center;overflow-wrap:anywhere}.sample{font:700 clamp(28px,5vw,64px)/1.35 Codencoffee,monospace;overflow-wrap:anywhere;margin:12px 0 26px}.note{font-size:13px;color:#92929d}
+</style>
+</head>
+<body>
+<h1>Codencoffee Bold</h1>
+<p>Complete glyph atlas · each character labelled with Unicode code point and glyph name.</p>
+<div class="section"><h2>Live specimen</h2><div class="sample">codeNcoffee<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789<br>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\\]^_&#96;{|}~</div></div>
+<div id="atlas"></div>
+<p class="note">The displayed glyphs are rendered from the actual WOFF2 font file in this repository.</p>
+<script>
+const groups=[
+["Uppercase","ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
+["Lowercase","abcdefghijklmnopqrstuvwxyz"],
+["Digits","0123456789"],
+["Punctuation and symbols",Array.from({length:95},(_,i)=>String.fromCharCode(i+32)).join("")],
+["Additional Unicode","₹×÷¿¡"]
+];
+const atlas=document.getElementById("atlas");
+for(const [title,chars] of groups){
+ const section=document.createElement("section");section.className="section";
+ const heading=document.createElement("h2");heading.textContent=title;section.append(heading);
+ const grid=document.createElement("div");grid.className="grid";
+ for(const ch of [...new Set([...chars])]){
+  const cp=ch.codePointAt(0);const card=document.createElement("div");card.className="glyph";
+  const glyph=document.createElement("div");glyph.className="char";glyph.textContent=ch===" "?"␠":ch;
+  const label=document.createElement("div");label.className="name";label.textContent="U+"+cp.toString(16).toUpperCase().padStart(4,"0")+" · "+(cp===32?"SPACE":"GLYPH");
+  card.append(glyph,label);grid.append(card);
+ }
+ section.append(grid);atlas.append(section);
+}
+</script>
+</body></html>
