@@ -4,10 +4,13 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## Live previews
+## Glyph preview
 
-- **[Open the full glyph atlas](proof/glyph-atlas.html)** — every supported character is rendered individually in the actual font, with its Unicode code point and character name.
-- **[Open the browser specimen](web/index.html)** — uppercase, lowercase, digits, punctuation and extra symbols.
+The full glyph sheet below renders each supported character in the actual font and labels it with its Unicode code point and character name. Open the [interactive glyph atlas](proof/glyph-atlas.html) for a larger view.
+
+<p align="center"><img src="proof/glyph-coverage.svg" alt="Complete Codencoffee glyph atlas with Unicode names" width="100%"></p>
+
+[Open the browser specimen](web/index.html) — uppercase, lowercase, digits, punctuation and extra symbols.
 
 ## Font files
 
@@ -35,12 +38,7 @@
   font-weight: 700;
   font-display: swap;
 }
-
-.codencoffee {
-  font-family: "Codencoffee", sans-serif;
-  font-weight: 700;
-  font-synthesis: none;
-}
+.codencoffee { font-family: "Codencoffee", sans-serif; font-weight: 700; font-synthesis: none; }
 ~~~
 
 ## Build and validate
@@ -69,6 +67,7 @@ The checked-in WOFF2 is the canonical binary master. The script exports a TTF an
 ├── tools/build_font.py
 ├── proof/
 │   ├── glyph-atlas.html
+│   ├── glyph-coverage.svg
 │   └── QA-REPORT.json
 ├── source-references/
 ├── web/
