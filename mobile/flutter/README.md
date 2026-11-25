@@ -11,24 +11,29 @@ flutter:
           weight: 700
 ~~~
 
-Use it for short display text:
+Set it as the application theme's default font family:
 
 ~~~dart
-Text(
-  'codeNcoffee',
-  style: const TextStyle(
+MaterialApp(
+  theme: ThemeData(
+    fontFamily: 'Codencoffee',
+  ),
+  home: const YourScreen(),
+)
+~~~
+
+Use the same family for paragraphs and dense UI:
+
+~~~dart
+const Text(
+  'Paragraphs and dense interface copy also use Codencoffee Bold.',
+  style: TextStyle(
     fontFamily: 'Codencoffee',
     fontWeight: FontWeight.w700,
-    fontSize: 32,
+    fontSize: 16,
+    height: 1.6,
   ),
 )
 ~~~
 
-For paragraphs and dense UI text, omit `fontFamily` so Flutter uses the platform's default text family:
-
-~~~dart
-const Text(
-  'Long descriptions and body copy should use the default platform font.',
-  style: TextStyle(fontSize: 16, height: 1.5),
-)
-~~~
+Use `fontFamily: 'Codencoffee'` for custom text styles in buttons, form fields, navigation and other widgets too. This package contains one Bold style, so all text keeps the same bold appearance.
